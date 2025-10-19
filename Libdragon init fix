@@ -1,0 +1,6 @@
+sudo setenforce 0
+this cmd makes the libdragon work
+
+sudo setenforce 1 
+
+reinforces the perms
