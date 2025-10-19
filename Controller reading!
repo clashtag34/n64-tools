@@ -1,0 +1,28 @@
+Here is an example on how to get a simple A press
+--- warning this uses an outdated controller method I believe that joypad method replaced this ---
+
+-- getting includes --
+#include <libdragon.h>
+#include  <stdbool.h>
+
+
+int main(void) {
+    bool ispressed = false; // setting our bool to stop multiple presses
+    console_init();
+    console_clear();
+    controller_init();   // Step 1: initialize controllers
+    timer_init();        
+    printf("hello world press a to explode\n");
+
+    while (1) {
+        controller_scan();                     // Step 2: update controller states
+        struct controller_data inputs = get_keys_pressed();  // Step 3: read inputs
+
+        if (inputs.c[0].A && !ispressed) {  // check if user pressed A and if they have already activated the bool  
+            console_clear();
+            printf("A button pressed!\n");
+            ispressed = true;
+        
+        }
+    }
+}
